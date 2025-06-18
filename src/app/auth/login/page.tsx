@@ -158,7 +158,7 @@ export default function LoginPage() {
                   </svg>
                 </span>
               ) : null}
-              {loading ? 'Entrando...' : 'Entrar'}
+              {loading ? 'Entrando...' : 'Entrarr'}
             </button>
           </div>
         </form>
