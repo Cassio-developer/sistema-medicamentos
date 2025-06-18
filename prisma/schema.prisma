@@ -40,5 +40,5 @@ model Medicamento {
   imagem      String?  @default("no-image.png")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  userId      String?  // Referência opcional ao usuário que cadastrou
+  userId      String?  
 }
