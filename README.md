@@ -16,7 +16,7 @@ Um sistema completo para gerenciamento de medicamentos desenvolvido com Next.js,
 
 - **Frontend**: Next.js 14, TypeScript, Tailwind CSS
 - **Backend**: Next.js API Routes
-- **Banco de Dados**: SQLite com Prisma ORM
+- **Banco de Dados**: SQLite (desenvolvimento) / PostgreSQL (produção)
 - **Autenticação**: Sistema customizado com sessões
 - **Upload**: Multer para upload de arquivos
 - **Notificações**: WhatsApp Business API, Telegram Bot API, Twilio
@@ -43,7 +43,7 @@ npm install
 3. **Configure as variáveis de ambiente**
 Crie um arquivo `.env.local` na raiz do projeto:
 ```env
-# Banco de dados
+# Banco de dados (desenvolvimento local)
 DATABASE_URL="file:./dev.db"
 
 # Chaves de API (opcional - para notificações)
@@ -72,6 +72,51 @@ npm run dev
 
 6. **Acesse a aplicação**
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
+
+## 🚀 Deploy no Vercel
+
+### 1. Configuração do Banco de Dados
+
+Para deploy no Vercel, você precisa de um banco PostgreSQL. Recomendamos:
+
+- **Vercel Postgres** (mais fácil)
+- **Neon** (gratuito)
+- **Supabase** (gratuito)
+
+### 2. Configuração do Schema
+
+1. **Substitua o conteúdo do arquivo `prisma/schema.prisma`** pelo conteúdo de `prisma/schema.production.prisma`
+2. **Ou edite manualmente** o `schema.prisma`:
+```prisma
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+```
+
+### 3. Deploy no Vercel
+
+1. **Conecte seu repositório** ao Vercel
+2. **Configure as variáveis de ambiente**:
+   - `DATABASE_URL`: URL do seu banco PostgreSQL
+   - Outras variáveis de API (opcional)
+
+3. **Configure o Build Command** (se necessário):
+```bash
+npx prisma generate && npm run build
+```
+
+4. **Configure o Install Command**:
+```bash
+npm install
+```
+
+### 4. Pós-deploy
+
+Após o deploy, execute as migrações:
+```bash
+npx prisma db push
+```
 
 ## 📁 Estrutura do Projeto
 
@@ -131,7 +176,8 @@ Assistente virtual integrado para ajudar usuários com dúvidas sobre o sistema.
 ### Vercel (Recomendado)
 1. Conecte seu repositório ao Vercel
 2. Configure as variáveis de ambiente
-3. Deploy automático a cada push
+3. Configure o banco PostgreSQL
+4. Deploy automático a cada push
 
 ### Outras plataformas
 O projeto pode ser deployado em qualquer plataforma que suporte Next.js.
