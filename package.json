@@ -1,0 +1,52 @@
+{
+  "name": "sistema-cadastro-remedios",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.4",
+    "@hookform/resolvers": "^3.3.4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@wppconnect-team/wppconnect": "^1.37.2",
+    "axios": "^1.6.7",
+    "bcryptjs": "^3.0.2",
+    "chrome-aws-lambda": "6.0.0",
+    "framer-motion": "^12.16.0",
+    "jsonwebtoken": "^9.0.2",
+    "next": "14.1.0",
+    "node-cron": "^4.1.0",
+    "pg": "^8.16.0",
+    "puppeteer": "19.11.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.50.0",
+    "react-icons": "^5.5.0",
+    "react-slick": "^0.30.3",
+    "react-toastify": "^10.0.6",
+    "slick-carousel": "^1.8.1",
+    "twilio": "^5.7.0",
+    "zod": "^3.25.49"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.8.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.13",
+    "@types/react-toastify": "^4.1.0",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8",
+    "prisma": "^5.22.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+}
